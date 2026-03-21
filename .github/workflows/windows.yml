@@ -39,11 +39,11 @@ jobs:
       - name: Install Git Libraries
         run: |
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc --quiet
-          haxelib git flxanimate https://github.com/Dot-Stuff/flxanimate.git --quiet
+          haxelib git flxanimate https://github.com/Dot-Stuff/flxanimate.git 074712066f10c85c292153df7042f01f4640d5f1 --quiet
 
       # 5. Compile the Game
       - name: Compile Game
-        run: haxelib run lime build windows -fianm
+        run: haxelib run lime build windows -final
 
       # 6. Upload the result (Updated to v4)
       - name: Upload Artifact
