@@ -1,0 +1,53 @@
+name: Build Windows
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  buildWindows:
+    runs-on: windows-latest
+
+    steps:
+      # 1. Checkout the code
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # 2. Setup Haxe (Matching your guide's 4.2.5 requirement)
+      - name: Setup Haxe
+        uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.2.5
+
+      # 3. Install Haxe Libraries
+      - name: Install Haxelib Libraries
+        run: |
+          haxelib setup ~/haxelib
+          haxelib install flixel --quiet
+          haxelib install flixel-addons --quiet
+          haxelib install flixel-ui --quiet
+          haxelib install hscript --quiet
+          haxelib install hxCodec --quiet
+          haxelib install extension-androidtools --quiet
+          haxelib install HxWebView --quiet
+          haxelib install lime --quiet
+          haxelib run lime setup
+          
+      # 4. Install Git Libraries (Specific to your guide)
+      - name: Install Git Libraries
+        run: |
+          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc --quiet
+          haxelib git flxanimate https://github.com/Dot-Stuff/flxanimate.git --quiet
+
+      # 5. Compile the Game
+      - name: Compile Game
+        run: haxelib run lime build windows -fianm
+
+      # 6. Upload the result (The .exe and data folder)
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: CDEV-Engine-Windows
+          path: export/release/windows/bin
