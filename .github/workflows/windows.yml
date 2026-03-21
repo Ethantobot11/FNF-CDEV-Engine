@@ -45,9 +45,9 @@ jobs:
       - name: Compile Game
         run: haxelib run lime build windows -fianm
 
-      # 6. Upload the result (The .exe and data folder)
+      # 6. Upload the result (Updated to v4)
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: CDEV-Engine-Windows
+          name: CDEV-Engine-Build
           path: export/release/windows/bin
