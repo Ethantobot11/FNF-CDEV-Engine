@@ -40,10 +40,6 @@ jobs:
         run: |
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc --quiet
           git clone https://github.com/Dot-Stuff/flxanimate.git earlyFlxAnimatedayslmao --quiet
-          cd flxanimate
-          git checkout earlyFlxAnimatedayslmao
-          cd ..
-          haxelib dev flxanimate flxanimate
 
       # 5. Compile the Game
       - name: Compile Game
