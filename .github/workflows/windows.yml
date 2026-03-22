@@ -21,25 +21,8 @@ jobs:
         with:
           haxe-version: 4.2.5
 
-      # 3. Install Haxe Libraries
-      - name: Install Haxelib Libraries
-        run: |
-          haxelib setup ~/haxelib
-          haxelib install flixel --quiet
-          haxelib install flixel-addons --quiet
-          haxelib install flixel-ui --quiet
-          haxelib install hscript --quiet
-          haxelib install hxCodec --quiet
-          haxelib install extension-androidtools --quiet
-          haxelib install HxWebView --quiet
-          haxelib install lime --quiet
-          haxelib run lime setup
-          
-      # 4. Install Git Libraries (Hash Fix)
-      - name: Install Git Libraries
-        run: |
-          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc --quiet
-          git clone https://github.com/Dot-Stuff/flxanimate.git earlyFlxAnimatedayslmao --quiet
+      - name: Install Dependencies
+        run: ./install_deps.bat
 
       # 5. Compile the Game
       - name: Compile Game
