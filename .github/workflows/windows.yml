@@ -35,11 +35,15 @@ jobs:
           haxelib install lime --quiet
           haxelib run lime setup
           
-      # 4. Install Git Libraries (Specific to your guide)
+      # 4. Install Git Libraries (Hash Fix)
       - name: Install Git Libraries
         run: |
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc --quiet
-          haxelib git flxanimate https://github.com/Dot-Stuff/flxanimate.git 074712066f10c85c292153df7042f01f4640d5f1 --quiet
+          git clone https://github.com/Dot-Stuff/flxanimate.git --quiet
+          cd flxanimate
+          git checkout 074712066f10c85c292153df7042f01f4640d5f1
+          cd ..
+          haxelib dev flxanimate flxanimate
 
       # 5. Compile the Game
       - name: Compile Game
