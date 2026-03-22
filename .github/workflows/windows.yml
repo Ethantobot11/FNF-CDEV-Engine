@@ -39,9 +39,9 @@ jobs:
       - name: Install Git Libraries
         run: |
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc --quiet
-          git clone https://github.com/Dot-Stuff/flxanimate.git --quiet
+          git clone https://github.com/Dot-Stuff/flxanimate.git v1.2.0 --quiet
           cd flxanimate
-          git checkout 074712066f10c85c292153df7042f01f4640d5f1
+          git checkout v1.2.0
           cd ..
           haxelib dev flxanimate flxanimate
 
