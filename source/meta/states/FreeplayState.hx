@@ -1,7 +1,8 @@
 package meta.states;
 
-import game.song.Song;
+import Song; 
 import meta.states.PlayState;
+import meta.states.LoadingState;
 import flixel.util.FlxTimer;
 import game.system.FunkinSoundFilter;
 import game.cdev.objects.CDevInputText;
